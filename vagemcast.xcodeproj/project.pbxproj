@@ -10,11 +10,10 @@
 		CFA054AF2664C56E0086E763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054AE2664C56E0086E763 /* AppDelegate.swift */; };
 		CFA054B12664C56E0086E763 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054B02664C56E0086E763 /* SceneDelegate.swift */; };
 		CFA054B32664C56E0086E763 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054B22664C56E0086E763 /* ViewController.swift */; };
-		CFA054B62664C56E0086E763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA054B42664C56E0086E763 /* Main.storyboard */; };
 		CFA054B82664C5700086E763 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA054B72664C5700086E763 /* Assets.xcassets */; };
 		CFA054BB2664C5700086E763 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA054B92664C5700086E763 /* LaunchScreen.storyboard */; };
-		CFA054C62664C5700086E763 /* vagemcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054C52664C5700086E763 /* vagemcastTests.swift */; };
-		CFA054D12664C5700086E763 /* vagemcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054D02664C5700086E763 /* vagemcastUITests.swift */; };
+		CFA054C62664C5700086E763 /* VagemcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054C52664C5700086E763 /* VagemcastTests.swift */; };
+		CFA054D12664C5700086E763 /* VagemcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054D02664C5700086E763 /* VagemcastUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,15 +38,14 @@
 		CFA054AE2664C56E0086E763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFA054B02664C56E0086E763 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFA054B22664C56E0086E763 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CFA054B52664C56E0086E763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFA054B72664C5700086E763 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFA054BA2664C5700086E763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFA054BC2664C5700086E763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFA054C12664C5700086E763 /* vagemcastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vagemcastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFA054C52664C5700086E763 /* vagemcastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vagemcastTests.swift; sourceTree = "<group>"; };
+		CFA054C52664C5700086E763 /* VagemcastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VagemcastTests.swift; sourceTree = "<group>"; };
 		CFA054C72664C5700086E763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFA054CC2664C5700086E763 /* vagemcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vagemcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFA054D02664C5700086E763 /* vagemcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vagemcastUITests.swift; sourceTree = "<group>"; };
+		CFA054D02664C5700086E763 /* VagemcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VagemcastUITests.swift; sourceTree = "<group>"; };
 		CFA054D22664C5700086E763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,12 +97,10 @@
 		CFA054AD2664C56E0086E763 /* vagemcast */ = {
 			isa = PBXGroup;
 			children = (
-				CFA054AE2664C56E0086E763 /* AppDelegate.swift */,
-				CFA054B02664C56E0086E763 /* SceneDelegate.swift */,
-				CFA054B22664C56E0086E763 /* ViewController.swift */,
-				CFA054B42664C56E0086E763 /* Main.storyboard */,
-				CFA054B72664C5700086E763 /* Assets.xcassets */,
-				CFA054B92664C5700086E763 /* LaunchScreen.storyboard */,
+				CFA054DE2664CEA70086E763 /* application */,
+				CFA054E12664CEB60086E763 /* features */,
+				CFA054E02664CEB10086E763 /* resources */,
+				CFA054DF2664CEAC0086E763 /* utilities */,
 				CFA054BC2664C5700086E763 /* Info.plist */,
 			);
 			path = vagemcast;
@@ -113,7 +109,7 @@
 		CFA054C42664C5700086E763 /* vagemcastTests */ = {
 			isa = PBXGroup;
 			children = (
-				CFA054C52664C5700086E763 /* vagemcastTests.swift */,
+				CFA054C52664C5700086E763 /* VagemcastTests.swift */,
 				CFA054C72664C5700086E763 /* Info.plist */,
 			);
 			path = vagemcastTests;
@@ -122,10 +118,43 @@
 		CFA054CF2664C5700086E763 /* vagemcastUITests */ = {
 			isa = PBXGroup;
 			children = (
-				CFA054D02664C5700086E763 /* vagemcastUITests.swift */,
+				CFA054D02664C5700086E763 /* VagemcastUITests.swift */,
 				CFA054D22664C5700086E763 /* Info.plist */,
 			);
 			path = vagemcastUITests;
+			sourceTree = "<group>";
+		};
+		CFA054DE2664CEA70086E763 /* application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = application;
+			sourceTree = "<group>";
+		};
+		CFA054DF2664CEAC0086E763 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		CFA054E02664CEB10086E763 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				CFA054B02664C56E0086E763 /* SceneDelegate.swift */,
+				CFA054AE2664C56E0086E763 /* AppDelegate.swift */,
+				CFA054B72664C5700086E763 /* Assets.xcassets */,
+				CFA054B92664C5700086E763 /* LaunchScreen.storyboard */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		CFA054E12664CEB60086E763 /* features */ = {
+			isa = PBXGroup;
+			children = (
+				CFA054B22664C56E0086E763 /* ViewController.swift */,
+			);
+			path = features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +167,7 @@
 				CFA054A72664C56E0086E763 /* Sources */,
 				CFA054A82664C56E0086E763 /* Frameworks */,
 				CFA054A92664C56E0086E763 /* Resources */,
+				CFA054E22664D0570086E763 /* Run Swiftlint Script */,
 			);
 			buildRules = (
 			);
@@ -233,7 +263,6 @@
 			files = (
 				CFA054BB2664C5700086E763 /* LaunchScreen.storyboard in Resources */,
 				CFA054B82664C5700086E763 /* Assets.xcassets in Resources */,
-				CFA054B62664C56E0086E763 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +282,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CFA054E22664D0570086E763 /* Run Swiftlint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swiftlint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CFA054A72664C56E0086E763 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -268,7 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFA054C62664C5700086E763 /* vagemcastTests.swift in Sources */,
+				CFA054C62664C5700086E763 /* VagemcastTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFA054D12664C5700086E763 /* vagemcastUITests.swift in Sources */,
+				CFA054D12664C5700086E763 /* VagemcastUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +346,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CFA054B42664C56E0086E763 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFA054B52664C56E0086E763 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CFA054B92664C5700086E763 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
