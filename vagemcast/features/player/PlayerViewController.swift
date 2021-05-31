@@ -80,6 +80,14 @@ class PlayerViewController: UIViewController {
 
     private func setupPlayer() {
         playerState = .paused
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("\(String(describing: error))")
+            print("Failed to activate session!")
+        }
     }
 
     private func play() {
