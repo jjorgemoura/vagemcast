@@ -76,14 +76,23 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lup-lg-GCD">
                                     <rect key="frame" x="0.0" y="120.5" width="122" height="30"/>
                                     <state key="normal" title="Rewind"/>
+                                    <connections>
+                                        <action selector="rewind:" destination="-1" eventType="touchUpInside" id="z32-UW-MQn"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIk-8Z-pYz">
                                     <rect key="frame" x="122" y="120.5" width="122" height="30"/>
                                     <state key="normal" title="Play/Pause"/>
+                                    <connections>
+                                        <action selector="playPauseTapped:" destination="-1" eventType="touchUpInside" id="Qbc-so-ezx"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GF-Tr-oT3">
                                     <rect key="frame" x="244" y="120.5" width="122" height="30"/>
                                     <state key="normal" title="FForward"/>
+                                    <connections>
+                                        <action selector="fastForward:" destination="-1" eventType="touchUpInside" id="PwM-HN-Qij"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
