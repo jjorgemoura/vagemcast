@@ -4,6 +4,7 @@
 import Foundation
 
 extension PlayerViewController {
+    
     func downloadAndSaveAudioFile(_ audioFile: String, completion: @escaping (String) -> Void) {
 
         // Create directory if not present
@@ -20,7 +21,7 @@ extension PlayerViewController {
 
         if let audioUrl = URL(string: audioFile) {     //http://freetone.org/ring/stan/iPhone_5-Alarm.mp3
             // create your document folder url
-            let documentsUrl =  FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first! as URL
+            let documentsUrl = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first! as URL
             let documentsFolderUrl = documentsUrl.appendingPathComponent("Sounds")
             // your destination file url
             let destinationUrl = documentsFolderUrl.appendingPathComponent(audioUrl.lastPathComponent)

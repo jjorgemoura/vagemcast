@@ -25,33 +25,36 @@ class PlayerViewController: UIViewController {
     private let pauseButtonImage = UIImage(systemName: "pause.fill")
 
     private var playerState: PlaybackState = .paused
-
-    private let player: AVPlayer = {
-        let avPlayer = AVPlayer()
-        avPlayer.automaticallyWaitsToMinimizeStalling = false
-        return avPlayer
-    }()
-
-    private var audioPlayer: AVAudioPlayer?
     private var audioData: Data?
 
-    private var audioPlayerNode: AVAudioPlayerNode?
-    private var audioEngine: AVAudioEngine?
+    private var audioPlayerNode = AVAudioPlayerNode()
+    private var audioEngine = AVAudioEngine()
+    private var audioFile: AVAudioFile?
+
+    private var audioSampleRate: Double = 0
+    private var audioLengthSamples: AVAudioFramePosition = 0
+    private var audioLengthSeconds: Double = 0
+    private var seekFrame: AVAudioFramePosition = 0
+    private var currentPosition: AVAudioFramePosition = 0
+
+    private var needsFileScheduled = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
+        setupSession()
         setupPlayer()
 
-        //        downloadAudioFile()
-//        audioData = loadAudioFileFromDisk(fileName: "atp432.mp3")
+        // downloadAudioFile()
+        // audioData = loadAudioFileFromDisk(fileName: "atp432.mp3")
+
         updateState(to: .paused)
     }
 
     // MARK: - Actions
 
-    @IBAction private  func playPauseTapped(_ sender: Any) {
+    @IBAction private func playPauseTapped(_ sender: Any) {
         switch playerState {
         case .paused:
             updateState(to: .playing)
@@ -63,12 +66,65 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction private func rewind(_ sender: Any) {
+        seek(to: -10)
     }
 
     @IBAction private func fastForward(_ sender: Any) {
+        seek(to: 10)
     }
 
     // MARK: - Private
+
+    private func setupView() {
+        playPauseButton?.setTitle(nil, for: .normal)
+        minusFitfteenButton?.setTitle(nil, for: .normal)
+        plusFitfteenButton?.setTitle(nil, for: .normal)
+
+        playPauseButton?.setImage(playButtonImage, for: .normal)
+        minusFitfteenButton?.setImage(UIImage(systemName: "gobackward.15"), for: .normal)
+        plusFitfteenButton?.setImage(UIImage(systemName: "goforward.15"), for: .normal)
+
+        currentTimeLabel?.text = "00:00"
+        totalDurationLabel?.text = "00:00"
+        episodeTitleLabel?.text = "Title"
+        episodeAuthorLabel?.text = "Author"
+
+        episodeImageView?.image = UIImage(systemName: "antenna.radiowaves.left.and.right")
+    }
+
+    private func setupSession() {
+        updateState(to: .inactive)
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("\(String(describing: error))")
+            print("Failed to activate session!")
+        }
+    }
+
+    private func setupPlayer() {
+        guard let file = try? AVAudioFile(forReading: getDocumentsDirectory().appendingPathComponent("atp432.mp3")) else { return }
+
+        audioFile = file
+        let format = file.processingFormat
+        audioSampleRate = format.sampleRate
+        audioLengthSamples = file.length
+        audioLengthSeconds = Double(audioLengthSamples) / audioSampleRate
+
+        audioEngine.attach(audioPlayerNode)
+        audioEngine.connect(audioPlayerNode, to: audioEngine.mainMixerNode, format: format)
+        audioEngine.prepare()
+
+        do {
+            try audioEngine.start()
+
+            audioPlayerNode.scheduleFile(file, at: nil)
+        } catch {
+            print("Error starting the player: \(error.localizedDescription)")
+        }
+    }
 
     private func updateState(to playbackState: PlaybackState) {
         switch playbackState {
@@ -88,107 +144,63 @@ class PlayerViewController: UIViewController {
         }
     }
 
-    private func downloadAudioFile() {
-                guard let assetURL = URL(string: "https://traffic.libsyn.com/atpfm/atp432.mp3") else { return }
-
-                let session = URLSession.shared.dataTask(with: assetURL) { data, response, error in
-                    if let error = error {
-                        print("Opsss -> \(error)")
-                    }
-
-                    if let httpResponse = response as? HTTPURLResponse {
-                        print("Return code -> \(httpResponse.statusCode)")
-                    }
-
-                    self.audioData = data
-                    DispatchQueue.main.async {
-                        self.updateState(to: .paused)
-                    }
-//                    self.saveAudioFileToDisk(data: data!)
-                }
-                session.resume()
-    }
-
-    private func setupView() {
-        playPauseButton?.setTitle(nil, for: .normal)
-        minusFitfteenButton?.setTitle(nil, for: .normal)
-        plusFitfteenButton?.setTitle(nil, for: .normal)
-
-        playPauseButton?.setImage(playButtonImage, for: .normal)
-        minusFitfteenButton?.setImage(UIImage(systemName: "gobackward.15"), for: .normal)
-        plusFitfteenButton?.setImage(UIImage(systemName: "goforward.15"), for: .normal)
-
-        currentTimeLabel?.text = "00:00"
-        totalDurationLabel?.text = "00:00"
-        episodeTitleLabel?.text = "Title"
-        episodeAuthorLabel?.text = "Author"
-
-        episodeImageView?.image = UIImage(systemName: "antenna.radiowaves.left.and.right")
-    }
-
-    private func setupPlayer() {
-        updateState(to: .inactive)
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("\(String(describing: error))")
-            print("Failed to activate session!")
-        }
-    }
-
     private func play() {
-        // AVPlayer
-        guard let assetURL = URL(string: "https://traffic.libsyn.com/atpfm/atp432.mp3") else { return }
-
-        let playerItem = AVPlayerItem(url: assetURL)
-        player.replaceCurrentItem(with: playerItem)
-        //        player.play()
-
-        // AVAudioPlayer
-        if let audioData = audioData {
-            audioPlayer = try? AVAudioPlayer(data: audioData)
-//            audioPlayer?.play()
-        }
-
-        // AvAudioPlayerNode
-        let fileURL = getDocumentsDirectory().appendingPathComponent("atp432.mp3")
-        guard let file = try? AVAudioFile(forReading: fileURL) else { return }
-        let format = file.processingFormat
-
-        let audioLengthSamples = file.length
-        let audioSampleRate = format.sampleRate
-        let audioLengthSeconds = Double(audioLengthSamples) / audioSampleRate
-        print(audioLengthSeconds)
-//        audioFile = file
-
-        let engine = AVAudioEngine()
-        let playerNode = AVAudioPlayerNode()
-        engine.attach(playerNode)
-
-        engine.connect(playerNode, to: engine.mainMixerNode, format: format)
-        engine.prepare()
-
-        do {
-            try engine.start()
-
-            playerNode.scheduleFile(file, at: nil) {
-                print("sdafdsxfw")
-            }
-
-            playerNode.play()
-
-        } catch {
-            print("Error starting the player: \(error.localizedDescription)")
-        }
-
-        audioEngine = engine
-        audioPlayerNode = playerNode
+        audioPlayerNode.play()
     }
 
     private func pause() {
-        player.pause()
+        audioPlayerNode.pause()
+    }
+
+    private func seek(to time: Double) {
+        guard let audioFile = audioFile else { return }
+
+        let offset = AVAudioFramePosition(time * audioSampleRate)
+        seekFrame = currentPosition + offset
+        seekFrame = max(seekFrame, 0)
+        seekFrame = min(seekFrame, audioLengthSamples)
+        currentPosition = seekFrame
+
+        let wasPlaying = audioPlayerNode.isPlaying
+        audioPlayerNode.stop()
+
+        if currentPosition < audioLengthSamples {
+//            updateDisplay()
+            needsFileScheduled = false
+
+            let frameCount = AVAudioFrameCount(audioLengthSamples - seekFrame)
+            audioPlayerNode.scheduleSegment(audioFile, startingFrame: seekFrame, frameCount: frameCount, at: nil) {
+                self.needsFileScheduled = true
+            }
+
+            if wasPlaying {
+                audioPlayerNode.play()
+            }
+        }
+    }
+}
+
+extension PlayerViewController {
+
+    private func downloadAudioFile() {
+        guard let assetURL = URL(string: "https://traffic.libsyn.com/atpfm/atp432.mp3") else { return }
+
+        let session = URLSession.shared.dataTask(with: assetURL) { data, response, error in
+            if let error = error {
+                print("Opsss -> \(error)")
+            }
+
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Return code -> \(httpResponse.statusCode)")
+            }
+
+            self.audioData = data
+            DispatchQueue.main.async {
+                self.updateState(to: .paused)
+            }
+            //                    self.saveAudioFileToDisk(data: data!)
+        }
+        session.resume()
     }
 
     private func loadAudioFileFromDisk(fileName: String) -> Data {
