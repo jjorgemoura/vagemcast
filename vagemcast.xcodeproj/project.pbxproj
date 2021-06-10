@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF1F658C2672A9240030B419 /* PlayerViewController+downloadSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F658B2672A9240030B419 /* PlayerViewController+downloadSave.swift */; };
 		CFA054AF2664C56E0086E763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054AE2664C56E0086E763 /* AppDelegate.swift */; };
 		CFA054B12664C56E0086E763 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054B02664C56E0086E763 /* SceneDelegate.swift */; };
 		CFA054B32664C56E0086E763 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA054B22664C56E0086E763 /* PlayerViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF1F658B2672A9240030B419 /* PlayerViewController+downloadSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerViewController+downloadSave.swift"; sourceTree = "<group>"; };
 		CFA054AB2664C56E0086E763 /* vagemcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vagemcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA054AE2664C56E0086E763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFA054B02664C56E0086E763 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF1F658A2672A8FC0030B419 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				CF1F658B2672A9240030B419 /* PlayerViewController+downloadSave.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		CFA054A22664C56E0086E763 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 		CFA054E32664D11C0086E763 /* player */ = {
 			isa = PBXGroup;
 			children = (
+				CF1F658A2672A8FC0030B419 /* util */,
 				CFA054B22664C56E0086E763 /* PlayerViewController.swift */,
 				CFA054E42664D1D30086E763 /* PlayerView.xib */,
 			);
@@ -320,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1F658C2672A9240030B419 /* PlayerViewController+downloadSave.swift in Sources */,
 				CFA054B32664C56E0086E763 /* PlayerViewController.swift in Sources */,
 				CFA054AF2664C56E0086E763 /* AppDelegate.swift in Sources */,
 				CFA054B12664C56E0086E763 /* SceneDelegate.swift in Sources */,

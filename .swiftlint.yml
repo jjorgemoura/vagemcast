@@ -120,12 +120,11 @@ closure_body_length:
   error: 60
 
 line_length:
-  warning: 190
-  error: 220
-
+  warning: 290 # 190
+  error: 420 # 220
 file_length:
-  warning: 200
-  error: 300
+  warning: 500 # 200
+  error: 800 # 300
 
 identifier_name:
   min_length:

@@ -5,6 +5,7 @@ import UIKit
 import AVFoundation
 
 enum PlaybackState {
+    case inactive
     case playing
     case paused
 }
@@ -31,11 +32,21 @@ class PlayerViewController: UIViewController {
         return avPlayer
     }()
 
+    private var audioPlayer: AVAudioPlayer?
+    private var audioData: Data?
+
+    private var audioPlayerNode: AVAudioPlayerNode?
+    private var audioEngine: AVAudioEngine?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
         setupPlayer()
+
+        //        downloadAudioFile()
+//        audioData = loadAudioFileFromDisk(fileName: "atp432.mp3")
+        updateState(to: .paused)
     }
 
     // MARK: - Actions
@@ -43,13 +54,11 @@ class PlayerViewController: UIViewController {
     @IBAction private  func playPauseTapped(_ sender: Any) {
         switch playerState {
         case .paused:
-            playerState = .playing
-            playPauseButton?.setImage(pauseButtonImage, for: .normal)
-            play()
+            updateState(to: .playing)
         case .playing:
-            playerState = .paused
-            playPauseButton?.setImage(playButtonImage, for: .normal)
-            pause()
+            updateState(to: .paused)
+        default:
+            updateState(to: .inactive)
         }
     }
 
@@ -60,6 +69,45 @@ class PlayerViewController: UIViewController {
     }
 
     // MARK: - Private
+
+    private func updateState(to playbackState: PlaybackState) {
+        switch playbackState {
+        case .inactive:
+            playerState = .inactive
+            playPauseButton?.isEnabled = false
+        case .playing:
+            playerState = .playing
+            playPauseButton?.isEnabled = true
+            playPauseButton?.setImage(pauseButtonImage, for: .normal)
+            play()
+        case .paused:
+            playerState = .paused
+            playPauseButton?.isEnabled = true
+            playPauseButton?.setImage(playButtonImage, for: .normal)
+            pause()
+        }
+    }
+
+    private func downloadAudioFile() {
+                guard let assetURL = URL(string: "https://traffic.libsyn.com/atpfm/atp432.mp3") else { return }
+
+                let session = URLSession.shared.dataTask(with: assetURL) { data, response, error in
+                    if let error = error {
+                        print("Opsss -> \(error)")
+                    }
+
+                    if let httpResponse = response as? HTTPURLResponse {
+                        print("Return code -> \(httpResponse.statusCode)")
+                    }
+
+                    self.audioData = data
+                    DispatchQueue.main.async {
+                        self.updateState(to: .paused)
+                    }
+//                    self.saveAudioFileToDisk(data: data!)
+                }
+                session.resume()
+    }
 
     private func setupView() {
         playPauseButton?.setTitle(nil, for: .normal)
@@ -79,7 +127,7 @@ class PlayerViewController: UIViewController {
     }
 
     private func setupPlayer() {
-        playerState = .paused
+        updateState(to: .inactive)
 
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -91,15 +139,80 @@ class PlayerViewController: UIViewController {
     }
 
     private func play() {
+        // AVPlayer
         guard let assetURL = URL(string: "https://traffic.libsyn.com/atpfm/atp432.mp3") else { return }
 
         let playerItem = AVPlayerItem(url: assetURL)
-
         player.replaceCurrentItem(with: playerItem)
-        player.play()
+        //        player.play()
+
+        // AVAudioPlayer
+        if let audioData = audioData {
+            audioPlayer = try? AVAudioPlayer(data: audioData)
+//            audioPlayer?.play()
+        }
+
+        // AvAudioPlayerNode
+        let fileURL = getDocumentsDirectory().appendingPathComponent("atp432.mp3")
+        guard let file = try? AVAudioFile(forReading: fileURL) else { return }
+        let format = file.processingFormat
+
+        let audioLengthSamples = file.length
+        let audioSampleRate = format.sampleRate
+        let audioLengthSeconds = Double(audioLengthSamples) / audioSampleRate
+        print(audioLengthSeconds)
+//        audioFile = file
+
+        let engine = AVAudioEngine()
+        let playerNode = AVAudioPlayerNode()
+        engine.attach(playerNode)
+
+        engine.connect(playerNode, to: engine.mainMixerNode, format: format)
+        engine.prepare()
+
+        do {
+            try engine.start()
+
+            playerNode.scheduleFile(file, at: nil) {
+                print("sdafdsxfw")
+            }
+
+            playerNode.play()
+
+        } catch {
+            print("Error starting the player: \(error.localizedDescription)")
+        }
+
+        audioEngine = engine
+        audioPlayerNode = playerNode
     }
 
     private func pause() {
         player.pause()
+    }
+
+    private func loadAudioFileFromDisk(fileName: String) -> Data {
+        let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
+
+        if let loadedData = try? Data(contentsOf: fileURL) {
+            updateState(to: .paused)
+            return loadedData
+        }
+        fatalError("oops")
+    }
+
+    private func saveAudioFileToDisk(data: Data) {
+        let fileURL = getDocumentsDirectory().appendingPathComponent("atp432.mp3")
+
+        do {
+            try data.write(to: fileURL, options: [.atomic])
+        } catch {
+            print(error)
+        }
+    }
+
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 }
