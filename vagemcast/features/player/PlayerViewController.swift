@@ -39,6 +39,13 @@ class PlayerViewController: UIViewController {
 
     private var needsFileScheduled = true
 
+    private var currentFrame: AVAudioFramePosition {
+        guard let lastRenderTime = audioPlayerNode.lastRenderTime else { return 0 }
+        guard let playerTime = audioPlayerNode.playerTime(forNodeTime: lastRenderTime) else { return 0 }
+
+        return playerTime.sampleTime
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -144,6 +151,31 @@ class PlayerViewController: UIViewController {
         }
     }
 
+    private func updateDisplay() {
+        currentPosition = currentFrame + seekFrame
+        currentPosition = max(currentPosition, 0)
+        currentPosition = min(currentPosition, audioLengthSamples)
+
+        if currentPosition >= audioLengthSamples {
+            audioPlayerNode.stop()
+
+            seekFrame = 0
+            currentPosition = 0
+
+//            isPlaying = false
+//            displayLink?.isPaused = true
+
+//            disconnectVolumeTap()
+        }
+
+        let playerProgress = Double(currentPosition) / Double(audioLengthSamples)
+        currentTimeLabel?.text = String(playerProgress)
+
+        let time = Double(currentPosition) / audioSampleRate
+//        let playerTime = PlayerTime(elapsedTime: time, remainingTime: audioLengthSeconds - time)
+        totalDurationLabel?.text = String(time)
+    }
+
     private func play() {
         audioPlayerNode.play()
     }
@@ -165,7 +197,7 @@ class PlayerViewController: UIViewController {
         audioPlayerNode.stop()
 
         if currentPosition < audioLengthSamples {
-//            updateDisplay()
+            updateDisplay()
             needsFileScheduled = false
 
             let frameCount = AVAudioFrameCount(audioLengthSamples - seekFrame)
