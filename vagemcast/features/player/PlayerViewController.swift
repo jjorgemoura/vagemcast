@@ -27,8 +27,9 @@ class PlayerViewController: UIViewController {
     private var playerState: PlaybackState = .paused
     private var audioData: Data?
 
-    private var audioPlayerNode = AVAudioPlayerNode()
     private var audioEngine = AVAudioEngine()
+    private var audioPlayerNode = AVAudioPlayerNode()
+    private var audioTimePitchEffectNode = AVAudioUnitTimePitch()
     private var audioFile: AVAudioFile?
 
     private var audioSampleRate: Double = 0
@@ -121,7 +122,9 @@ class PlayerViewController: UIViewController {
         audioLengthSeconds = Double(audioLengthSamples) / audioSampleRate
 
         audioEngine.attach(audioPlayerNode)
-        audioEngine.connect(audioPlayerNode, to: audioEngine.mainMixerNode, format: format)
+        audioEngine.attach(audioTimePitchEffectNode)
+        audioEngine.connect(audioPlayerNode, to: audioTimePitchEffectNode, format: format)
+        audioEngine.connect(audioTimePitchEffectNode, to: audioEngine.mainMixerNode, format: format)
         audioEngine.prepare()
 
         do {
@@ -177,6 +180,10 @@ class PlayerViewController: UIViewController {
     }
 
     private func play() {
+        update(rate: 1.5)
+//        update(pitch: 12) // 1 octave
+//        update(pitch: -12) // -1
+//        update(pitch: 7) // 5th
         audioPlayerNode.play()
     }
 
@@ -209,6 +216,14 @@ class PlayerViewController: UIViewController {
                 audioPlayerNode.play()
             }
         }
+    }
+
+    private func update(rate: Float) {
+        audioTimePitchEffectNode.rate = rate
+    }
+
+    private func update(pitch: Int) {
+        audioTimePitchEffectNode.pitch = Float(100 * pitch) // pitch means 1 half tone. 1 octave = 1200 cents
     }
 }
 
