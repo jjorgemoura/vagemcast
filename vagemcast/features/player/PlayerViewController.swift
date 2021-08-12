@@ -215,6 +215,10 @@ class PlayerViewController: UIViewController {
             if wasPlaying {
                 audioPlayerNode.play()
             }
+
+            // if wasPlaying {
+            //     audioPlayerNode.play()
+            // }
         }
     }
 
