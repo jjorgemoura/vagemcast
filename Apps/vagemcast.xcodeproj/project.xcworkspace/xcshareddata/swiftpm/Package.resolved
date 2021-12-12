@@ -2,12 +2,48 @@
   "object": {
     "pins": [
       {
+        "package": "alfaz",
+        "repositoryURL": "git@github.com:jjorgemoura/alfaz.git",
+        "state": {
+          "branch": "main",
+          "revision": "69459307990c0f319ab6abe742b931fd0b8380c5",
+          "version": null
+        }
+      },
+      {
+        "package": "beatz",
+        "repositoryURL": "git@github.com:jjorgemoura/beatz.git",
+        "state": {
+          "branch": "main",
+          "revision": "5e2bc1d30a2fac67f2598f5d39cc29b1f0763ae2",
+          "version": null
+        }
+      },
+      {
         "package": "combine-schedulers",
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
           "branch": null,
           "revision": "4cf088c29a20f52be0f2ca54992b492c54e0076b",
           "version": "0.5.3"
+        }
+      },
+      {
+        "package": "defectz",
+        "repositoryURL": "git@github.com:jjorgemoura/defectz.git",
+        "state": {
+          "branch": "main",
+          "revision": "70272cba946f175ead2262ea295b17dbd51bc1ad",
+          "version": null
+        }
+      },
+      {
+        "package": "gavetaz",
+        "repositoryURL": "git@github.com:jjorgemoura/gavetaz.git",
+        "state": {
+          "branch": "main",
+          "revision": "94ac42a2e5fa0fa288dd7928201e0ad25de7c697",
+          "version": null
         }
       },
       {
@@ -32,9 +68,9 @@
         "package": "swift-composable-architecture",
         "repositoryURL": "git@github.com:pointfreeco/swift-composable-architecture.git",
         "state": {
-          "branch": "main",
-          "revision": "87f388bedbf1ce484e639ace9d296016a7f20812",
-          "version": null
+          "branch": null,
+          "revision": "921272e329372563d5cae14e2b904f7737019005",
+          "version": "0.29.0"
         }
       },
       {
@@ -59,8 +95,17 @@
         "package": "swiftui-navigation",
         "repositoryURL": "git@github.com:pointfreeco/swiftui-navigation.git",
         "state": {
+          "branch": null,
+          "revision": "2694c03284a368168b3e0b8d7ab52626802d2246",
+          "version": "0.1.0"
+        }
+      },
+      {
+        "package": "variationz",
+        "repositoryURL": "git@github.com:jjorgemoura/variationz.git",
+        "state": {
           "branch": "main",
-          "revision": "7a61fb419997f56bd9928c7b405fc7557a60d4bd",
+          "revision": "bd3bf3588045e4f8ab5f39a7dbfdbe0d1451e5f7",
           "version": null
         }
       },

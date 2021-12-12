@@ -1,0 +1,18 @@
+#
+# -------- Swiftformat --------
+#
+
+#
+# -------- Configuration --------
+
+# format options
+
+# swift version
+--swiftversion 5.5
+
+
+# file options
+--exclude docs
+
+
+# rules
