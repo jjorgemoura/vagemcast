@@ -1,0 +1,43 @@
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# fastlane constants
+fastlane_version "2.141.0"
+default_platform :ios
+
+platform :ios do
+
+  ############ Public Lanes ############
+
+  lane :run_unit_tests do
+    scan(
+      scheme: ENV["XCODE_SCHEME_TESTS"],
+      device: "iPhone 13 Pro",
+      code_coverage: true,
+      clean: true
+      )
+  end
+
+  lane :run_linting do
+
+    swiftlint(
+      mode: :lint,
+      strict: true
+    )
+
+    swiftformat(
+      path: "../",
+      config: ".swiftformat",
+      lint: true   
+    )
+  end
+
+
+  lane :run_format do
+    swiftformat(
+      path: "../",
+      config: ".swiftformat",
+      # dryrun: true 
+    )
+  end
+end

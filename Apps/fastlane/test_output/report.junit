@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='AppFeatureTests.xctest' tests='1' failures='0'>
+  <testsuite name='AppFeatureTests.AppFeatureTests' tests='1' failures='0'>
+    <testcase classname='AppFeatureTests.AppFeatureTests' name='testXPTO' time='0.005'/>
+  </testsuite>
+</testsuites>

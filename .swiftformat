@@ -6,6 +6,11 @@
 # -------- Configuration --------
 
 # format options
+--extensionacl on-declarations
+--funcattributes prev-line
+--header strip
+--self init-only
+--typeattributes prev-line
 
 # swift version
 --swiftversion 5.5
