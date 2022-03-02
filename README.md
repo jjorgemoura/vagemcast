@@ -24,9 +24,9 @@ Vagemcast allows users to browse and play their favourite podcasts.
 
 It has three main features:
 
-* Distance converter between Kilometers (Km) and Miles (M)
-* Pace converter between minuter per Kilometer (m/Km) and minutes per miles (min/M)
-* Race pace or duration prediction. For a specific disyance, what is the expected duration based on a specific pace or what the necessary pace in order to achieve a targeted duration.
+* Search podcasts from podcast registry.
+* Subscribe and download podcasts.
+* Play podcasts.
 
 ### Why one more podcast app?
 
