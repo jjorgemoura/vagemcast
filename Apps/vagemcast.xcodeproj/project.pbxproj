@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF1B52A42766672D0078ED4E /* Alfaz in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B52A32766672D0078ED4E /* Alfaz */; };
-		CF1B52BF2766686D0078ED4E /* Beatz in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B52BE2766686D0078ED4E /* Beatz */; };
-		CF1B52C2276668810078ED4E /* Defectz in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B52C1276668810078ED4E /* Defectz */; };
-		CF1B52C5276668960078ED4E /* Gavetaz in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B52C4276668960078ED4E /* Gavetaz */; };
-		CF1B52C8276668AF0078ED4E /* Variationz in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B52C7276668AF0078ED4E /* Variationz */; };
 		CF1B52D627666AA80078ED4E /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CF1B52D527666AA80078ED4E /* AppFeature */; };
 		CF54AEB02764F7EE00D57473 /* VagemcastApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54AEAF2764F7EE00D57473 /* VagemcastApp.swift */; };
 		CF54AEB42764F7EF00D57473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF54AEB32764F7EF00D57473 /* Assets.xcassets */; };
@@ -33,13 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1B52A42766672D0078ED4E /* Alfaz in Frameworks */,
-				CF1B52C8276668AF0078ED4E /* Variationz in Frameworks */,
-				CF1B52C2276668810078ED4E /* Defectz in Frameworks */,
 				CF54AEEB2764FE6100D57473 /* SwiftUINavigation in Frameworks */,
-				CF1B52C5276668960078ED4E /* Gavetaz in Frameworks */,
 				CF54AEE22764FDD900D57473 /* ComposableArchitecture in Frameworks */,
-				CF1B52BF2766686D0078ED4E /* Beatz in Frameworks */,
 				CF1B52D627666AA80078ED4E /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,11 +107,6 @@
 			packageProductDependencies = (
 				CF54AEE12764FDD900D57473 /* ComposableArchitecture */,
 				CF54AEEA2764FE6100D57473 /* SwiftUINavigation */,
-				CF1B52A32766672D0078ED4E /* Alfaz */,
-				CF1B52BE2766686D0078ED4E /* Beatz */,
-				CF1B52C1276668810078ED4E /* Defectz */,
-				CF1B52C4276668960078ED4E /* Gavetaz */,
-				CF1B52C7276668AF0078ED4E /* Variationz */,
 				CF1B52D527666AA80078ED4E /* AppFeature */,
 			);
 			productName = vagemcast;
@@ -155,11 +140,6 @@
 			packageReferences = (
 				CF54AEE02764FDD900D57473 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				CF54AEE92764FE6100D57473 /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
-				CF1B52A22766672D0078ED4E /* XCRemoteSwiftPackageReference "alfaz" */,
-				CF1B52BD2766686D0078ED4E /* XCRemoteSwiftPackageReference "beatz" */,
-				CF1B52C0276668800078ED4E /* XCRemoteSwiftPackageReference "defectz" */,
-				CF1B52C3276668960078ED4E /* XCRemoteSwiftPackageReference "gavetaz" */,
-				CF1B52C6276668AF0078ED4E /* XCRemoteSwiftPackageReference "variationz" */,
 			);
 			productRefGroup = CF54AEAD2764F7EE00D57473 /* Products */;
 			projectDirPath = "";
@@ -392,52 +372,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CF1B52A22766672D0078ED4E /* XCRemoteSwiftPackageReference "alfaz" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:jjorgemoura/alfaz.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		CF1B52BD2766686D0078ED4E /* XCRemoteSwiftPackageReference "beatz" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:jjorgemoura/beatz.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		CF1B52C0276668800078ED4E /* XCRemoteSwiftPackageReference "defectz" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:jjorgemoura/defectz.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		CF1B52C3276668960078ED4E /* XCRemoteSwiftPackageReference "gavetaz" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:jjorgemoura/gavetaz.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		CF1B52C6276668AF0078ED4E /* XCRemoteSwiftPackageReference "variationz" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:jjorgemoura/variationz.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		CF54AEE02764FDD900D57473 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:pointfreeco/swift-composable-architecture.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.29.0;
+				minimumVersion = 0.38.0;
 			};
 		};
 		CF54AEE92764FE6100D57473 /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
@@ -451,31 +391,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CF1B52A32766672D0078ED4E /* Alfaz */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF1B52A22766672D0078ED4E /* XCRemoteSwiftPackageReference "alfaz" */;
-			productName = Alfaz;
-		};
-		CF1B52BE2766686D0078ED4E /* Beatz */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF1B52BD2766686D0078ED4E /* XCRemoteSwiftPackageReference "beatz" */;
-			productName = Beatz;
-		};
-		CF1B52C1276668810078ED4E /* Defectz */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF1B52C0276668800078ED4E /* XCRemoteSwiftPackageReference "defectz" */;
-			productName = Defectz;
-		};
-		CF1B52C4276668960078ED4E /* Gavetaz */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF1B52C3276668960078ED4E /* XCRemoteSwiftPackageReference "gavetaz" */;
-			productName = Gavetaz;
-		};
-		CF1B52C7276668AF0078ED4E /* Variationz */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF1B52C6276668AF0078ED4E /* XCRemoteSwiftPackageReference "variationz" */;
-			productName = Variationz;
-		};
 		CF1B52D527666AA80078ED4E /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;

@@ -12,7 +12,7 @@ import SwiftUI
 struct VagemcastApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Text("sdfsdd")
         }
     }
 }

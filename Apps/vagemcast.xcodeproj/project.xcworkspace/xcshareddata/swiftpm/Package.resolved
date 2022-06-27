@@ -2,24 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "alfaz",
-        "repositoryURL": "git@github.com:jjorgemoura/alfaz.git",
-        "state": {
-          "branch": "main",
-          "revision": "69459307990c0f319ab6abe742b931fd0b8380c5",
-          "version": null
-        }
-      },
-      {
-        "package": "beatz",
-        "repositoryURL": "git@github.com:jjorgemoura/beatz.git",
-        "state": {
-          "branch": "main",
-          "revision": "5e2bc1d30a2fac67f2598f5d39cc29b1f0763ae2",
-          "version": null
-        }
-      },
-      {
         "package": "combine-schedulers",
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
@@ -29,30 +11,12 @@
         }
       },
       {
-        "package": "defectz",
-        "repositoryURL": "git@github.com:jjorgemoura/defectz.git",
-        "state": {
-          "branch": "main",
-          "revision": "70272cba946f175ead2262ea295b17dbd51bc1ad",
-          "version": null
-        }
-      },
-      {
-        "package": "gavetaz",
-        "repositoryURL": "git@github.com:jjorgemoura/gavetaz.git",
-        "state": {
-          "branch": "main",
-          "revision": "94ac42a2e5fa0fa288dd7928201e0ad25de7c697",
-          "version": null
-        }
-      },
-      {
         "package": "swift-case-paths",
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
           "branch": null,
-          "revision": "d226d167bd4a68b51e352af5655c92bce8ee0463",
-          "version": "0.7.0"
+          "revision": "b4a872984463070c71e2e97e5c02c73a07d0fe36",
+          "version": "0.9.0"
         }
       },
       {
@@ -69,8 +33,8 @@
         "repositoryURL": "git@github.com:pointfreeco/swift-composable-architecture.git",
         "state": {
           "branch": null,
-          "revision": "ba9c626ab1b2b6af8cf684eebb2ab472fa5b6753",
-          "version": "0.33.1"
+          "revision": "b55977808fcc2ff75081b90f197f6e72a21214b4",
+          "version": "0.38.1"
         }
       },
       {
@@ -92,30 +56,12 @@
         }
       },
       {
-        "package": "Overture",
-        "repositoryURL": "https://github.com/pointfreeco/swift-overture",
-        "state": {
-          "branch": null,
-          "revision": "7977acd7597f413717058acc1e080731249a1d7e",
-          "version": "0.5.0"
-        }
-      },
-      {
         "package": "swiftui-navigation",
         "repositoryURL": "git@github.com:pointfreeco/swiftui-navigation.git",
         "state": {
           "branch": null,
           "revision": "2694c03284a368168b3e0b8d7ab52626802d2246",
           "version": "0.1.0"
-        }
-      },
-      {
-        "package": "variationz",
-        "repositoryURL": "git@github.com:jjorgemoura/variationz.git",
-        "state": {
-          "branch": "main",
-          "revision": "bd3bf3588045e4f8ab5f39a7dbfdbe0d1451e5f7",
-          "version": null
         }
       },
       {
